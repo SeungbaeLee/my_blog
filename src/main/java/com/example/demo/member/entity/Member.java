@@ -1,4 +1,4 @@
-package com.example.demo.user.entity;
+package com.example.demo.member.entity;
 
 import com.example.demo.board.entity.Board;
 import com.example.demo.comment.entity.Comment;
@@ -15,11 +15,11 @@ import java.util.List;
 @Setter
 @Getter
 @NoArgsConstructor
-public class User {
+public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long userId;
+    private long memberId;
 
     @Column
     private String name;
@@ -30,9 +30,9 @@ public class User {
     @Column
     private String password;
 
-    @OneToMany
+    @OneToMany(mappedBy = "member")
     private List<Board> boardList = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(mappedBy = "member")
     private List<Comment> commentList = new ArrayList<>();
 }

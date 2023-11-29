@@ -2,7 +2,7 @@ package com.example.demo.comment.entity;
 
 import com.example.demo.board.entity.Board;
 import com.example.demo.global.Auditable;
-import com.example.demo.user.entity.User;
+import com.example.demo.member.entity.Member;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,13 +21,13 @@ public class Comment extends Auditable {
     @Column
     private String content;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Board.class)
     @JoinColumn(name = "board_id")
     private Board board;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @ManyToOne(targetEntity = Member.class)
+    @JoinColumn(name = "member_id")
+    private Member member;
 
 
 }

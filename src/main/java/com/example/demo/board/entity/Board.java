@@ -3,7 +3,7 @@ package com.example.demo.board.entity;
 import com.example.demo.category.entity.Category;
 import com.example.demo.comment.entity.Comment;
 import com.example.demo.global.Auditable;
-import com.example.demo.user.entity.User;
+import com.example.demo.member.entity.Member;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,14 +31,14 @@ public class Board extends Auditable {
     @Column
     private long viewCount;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @ManyToOne(targetEntity = Member.class)
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     @OneToMany(mappedBy = "board")
     private List<Comment> commentList = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Category.class)
     @JoinColumn(name = "category_id")
     private Category category;
 }
