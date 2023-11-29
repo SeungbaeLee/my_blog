@@ -2,6 +2,7 @@ package com.example.demo.board.entity;
 
 import com.example.demo.category.entity.Category;
 import com.example.demo.comment.entity.Comment;
+import com.example.demo.global.Auditable;
 import com.example.demo.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -16,8 +17,9 @@ import java.util.List;
 @Setter
 @Getter
 @NoArgsConstructor
-public class Board {
+public class Board extends Auditable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long boardId;
 
     @Column

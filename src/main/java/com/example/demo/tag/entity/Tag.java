@@ -1,6 +1,7 @@
 package com.example.demo.tag.entity;
 
 import com.example.demo.board.entity.Board;
+import com.example.demo.global.Auditable;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-public class Tag {
+public class Tag extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long tagId;

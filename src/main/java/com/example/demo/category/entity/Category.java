@@ -1,6 +1,7 @@
 package com.example.demo.category.entity;
 
 import com.example.demo.board.entity.Board;
+import com.example.demo.global.Auditable;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.List;
 @Setter
 @Getter
 @NoArgsConstructor
-public class Category {
+public class Category extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

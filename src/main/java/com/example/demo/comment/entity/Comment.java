@@ -1,6 +1,7 @@
 package com.example.demo.comment.entity;
 
 import com.example.demo.board.entity.Board;
+import com.example.demo.global.Auditable;
 import com.example.demo.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -12,7 +13,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-public class Comment {
+public class Comment extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long commentId;
