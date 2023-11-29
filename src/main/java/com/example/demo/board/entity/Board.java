@@ -4,6 +4,7 @@ import com.example.demo.category.entity.Category;
 import com.example.demo.comment.entity.Comment;
 import com.example.demo.global.Auditable;
 import com.example.demo.member.entity.Member;
+import com.example.demo.tag.entity.BoardTag;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,5 +42,8 @@ public class Board extends Auditable {
     @ManyToOne(targetEntity = Category.class)
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @OneToMany(mappedBy = "board")
+    private List<BoardTag> tags = new ArrayList<>();
 }
 

@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table
 @Setter
@@ -20,7 +23,9 @@ public class Tag extends Auditable {
     @Column
     private String tagName;
 
-    @ManyToOne
-    @JoinColumn(name = "board_id")
-    private Board board;
+    @OneToMany(mappedBy = "tag")
+    private List<BoardTag> boards = new ArrayList<>();
+//    @ManyToOne
+//    @JoinColumn(name = "board_id")
+//    private Board board;
 }
