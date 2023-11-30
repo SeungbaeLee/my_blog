@@ -2,7 +2,7 @@ package com.example.demo.board.entity;
 
 import com.example.demo.category.entity.Category;
 import com.example.demo.comment.entity.Comment;
-import com.example.demo.global.Auditable;
+import com.example.demo.global.auditable.Auditable;
 import com.example.demo.member.entity.Member;
 import com.example.demo.tag.entity.BoardTag;
 import jakarta.persistence.*;

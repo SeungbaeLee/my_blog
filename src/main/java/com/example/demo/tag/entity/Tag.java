@@ -1,7 +1,6 @@
 package com.example.demo.tag.entity;
 
-import com.example.demo.board.entity.Board;
-import com.example.demo.global.Auditable;
+import com.example.demo.global.auditable.Auditable;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

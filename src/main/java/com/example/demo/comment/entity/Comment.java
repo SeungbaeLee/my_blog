@@ -1,7 +1,7 @@
 package com.example.demo.comment.entity;
 
 import com.example.demo.board.entity.Board;
-import com.example.demo.global.Auditable;
+import com.example.demo.global.auditable.Auditable;
 import com.example.demo.member.entity.Member;
 import jakarta.persistence.*;
 import lombok.Getter;
