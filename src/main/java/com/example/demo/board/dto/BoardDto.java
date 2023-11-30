@@ -41,7 +41,7 @@ public class BoardDto {
 
     @Getter
     @AllArgsConstructor
-    private static class Response {
+    public static class Response {
         private long boardId;
         private String title;
         private String content;
