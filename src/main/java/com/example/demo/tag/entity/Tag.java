@@ -22,9 +22,13 @@ public class Tag extends Auditable {
     private List<BoardTag> boards = new ArrayList<>();
 
     @Builder
-
     public Tag(String tagName, List<BoardTag> boards) {
         this.tagName = tagName;
         this.boards = boards;
+    }
+
+    @Builder
+    public Tag(String tagName) {
+        this.tagName = tagName;
     }
 }

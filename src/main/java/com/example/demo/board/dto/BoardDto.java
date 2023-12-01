@@ -46,10 +46,10 @@ public class BoardDto {
         private String title;
         private String content;
         private long viewCount;
-        private String member;
-        private String category;
-        private List<String> tags;
-        private List<String> comments;
+        private String member;//
+        private String category;//
+        private List<String> tags;//
+        private List<String> comments;//
 //        private List<String> imageUrl;
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
