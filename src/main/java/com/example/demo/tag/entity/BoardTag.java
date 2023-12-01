@@ -2,15 +2,11 @@ package com.example.demo.tag.entity;
 
 import com.example.demo.board.entity.Board;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
-@Table
-@Setter
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class BoardTag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +19,10 @@ public class BoardTag {
     @ManyToOne
     @JoinColumn(name = "tag_id")
     private Tag tag;
+
+    @Builder
+    public BoardTag(Board board, Tag tag) {
+        this.board = board;
+        this.tag = tag;
+    }
 }
