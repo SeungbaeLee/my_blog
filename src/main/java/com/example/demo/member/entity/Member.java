@@ -3,18 +3,14 @@ package com.example.demo.member.entity;
 import com.example.demo.board.entity.Board;
 import com.example.demo.comment.entity.Comment;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table
-@Setter
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
 
     @Id
@@ -35,4 +31,14 @@ public class Member {
 
     @OneToMany(mappedBy = "member")
     private List<Comment> commentList = new ArrayList<>();
+
+
+    @Builder
+    public Member(String name, String email, String password, List<Board> boardList, List<Comment> commentList) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.boardList = boardList;
+        this.commentList = commentList;
+    }
 }

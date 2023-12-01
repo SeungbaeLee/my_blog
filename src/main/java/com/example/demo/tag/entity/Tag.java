@@ -2,18 +2,14 @@ package com.example.demo.tag.entity;
 
 import com.example.demo.global.auditable.Auditable;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table
-@Setter
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Tag extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +20,11 @@ public class Tag extends Auditable {
 
     @OneToMany(mappedBy = "tag")
     private List<BoardTag> boards = new ArrayList<>();
-//    @ManyToOne
-//    @JoinColumn(name = "board_id")
-//    private Board board;
+
+    @Builder
+
+    public Tag(String tagName, List<BoardTag> boards) {
+        this.tagName = tagName;
+        this.boards = boards;
+    }
 }

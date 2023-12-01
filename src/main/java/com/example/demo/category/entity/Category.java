@@ -3,18 +3,14 @@ package com.example.demo.category.entity;
 import com.example.demo.board.entity.Board;
 import com.example.demo.global.auditable.Auditable;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table
-@Setter
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Category extends Auditable {
 
     @Id
@@ -26,4 +22,10 @@ public class Category extends Auditable {
 
     @OneToMany(mappedBy = "category")
     private List<Board> boardList = new ArrayList<>();
+
+    @Builder
+    public Category(String categoryName, List<Board> boardList) {
+        this.categoryName = categoryName;
+        this.boardList = boardList;
+    }
 }

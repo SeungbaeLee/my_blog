@@ -6,18 +6,14 @@ import com.example.demo.global.auditable.Auditable;
 import com.example.demo.member.entity.Member;
 import com.example.demo.tag.entity.BoardTag;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table
-@Setter
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Board extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,5 +41,16 @@ public class Board extends Auditable {
 
     @OneToMany(mappedBy = "board")
     private List<BoardTag> tags = new ArrayList<>();
+
+    @Builder
+    public Board(String title, String content, long viewCount, Member member, List<Comment> commentList, Category category, List<BoardTag> tags) {
+        this.title = title;
+        this.content = content;
+        this.viewCount = viewCount;
+        this.member = member;
+        this.commentList = commentList;
+        this.category = category;
+        this.tags = tags;
+    }
 }
 
