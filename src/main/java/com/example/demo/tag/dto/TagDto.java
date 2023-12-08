@@ -5,9 +5,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
-import java.util.List;
-
-public class tagDto {
+public class TagDto {
 
     @Getter
     @Setter
