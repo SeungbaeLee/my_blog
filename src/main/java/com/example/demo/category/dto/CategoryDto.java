@@ -7,7 +7,7 @@ import lombok.Setter;
 
 import java.util.List;
 
-public class categoryDto {
+public class CategoryDto {
 
     @Getter
     @Setter
