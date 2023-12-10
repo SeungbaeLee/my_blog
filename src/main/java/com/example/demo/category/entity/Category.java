@@ -28,4 +28,11 @@ public class Category extends Auditable {
         this.categoryName = categoryName;
         this.boardList = boardList;
     }
+
+    public List<Board> getBoardList(){
+        if (boardList == null) {
+            boardList = new ArrayList<>();
+        }
+        return boardList;
+    }
 }
