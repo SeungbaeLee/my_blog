@@ -32,6 +32,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'//유효성 검사 validation
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'//매핑 mapstruct 추가
 	implementation 'org.mapstruct:mapstruct:1.5.3.Final'//매핑 mapstruct 추가
+	implementation 'commons-validator:commons-validator:1.7' //유효성 검사
+	implementation 'org.springframework.security:spring-security-crypto:6.0.2'// 비밀번호 암호화
 }
 
 tasks.named('bootBuildImage') {
