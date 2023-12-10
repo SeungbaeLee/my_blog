@@ -4,12 +4,12 @@ import com.example.demo.board.entity.Board;
 import com.example.demo.global.auditable.Auditable;
 import com.example.demo.member.entity.Member;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Setter
 @Getter
 @NoArgsConstructor
 public class Comment extends Auditable {
@@ -28,5 +28,10 @@ public class Comment extends Auditable {
     @JoinColumn(name = "member_id")
     private Member member;
 
-
+    @Builder
+    public Comment(String content, Board board, Member member) {
+        this.content = content;
+        this.board = board;
+        this.member = member;
+    }
 }
