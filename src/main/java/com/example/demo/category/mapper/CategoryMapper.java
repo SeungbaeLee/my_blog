@@ -18,12 +18,16 @@ public interface CategoryMapper {
     Category categoryPatchToCategory(CategoryDto.Patch patch);
 
 
-    @Mapping(target = "boards", source = "boardList")
+    @Mapping(target = "numberOfBoards", expression = "java(calculateNumberOfBoards(category))")
     CategoryDto.Response categoryToResponse(Category category);
 
     default List<String> mapBoardListToBoardNames(List<Board> boardList) {
         return boardList.stream()
                 .map(Board::getTitle)
                 .collect(Collectors.toList());
+    }
+
+    default int calculateNumberOfBoards(Category category) {
+        return category.getBoardList().size();
     }
 }
