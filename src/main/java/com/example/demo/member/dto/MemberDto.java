@@ -1,10 +1,7 @@
 package com.example.demo.member.dto;
 
 import jakarta.validation.constraints.Pattern;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -14,6 +11,7 @@ public class MemberDto {
     @Getter
     @Setter
     @AllArgsConstructor
+    @NoArgsConstructor
     public static class Post {
         @NonNull
         @Pattern(regexp = "^[a-zA-Z0-9+.-]+@[a-zA-Z0-9.-]+$")
@@ -32,9 +30,7 @@ public class MemberDto {
         private long memberId;
         private String name;
         private String email;
-        private LocalDateTime createAt;
+        private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
-        private List<String> boards;
-        private List<String> comments;
     }
 }
