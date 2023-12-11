@@ -1,6 +1,8 @@
 package com.example.demo.category.service;
 
+import com.example.demo.category.dto.CategoryDto;
 import com.example.demo.category.entity.Category;
+import com.example.demo.category.mapper.CategoryMapper;
 import com.example.demo.category.repository.CategoryRepository;
 import com.example.demo.global.exception.BusinessException;
 import com.example.demo.global.exception.ExceptionCode;
@@ -9,7 +11,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Transactional
@@ -18,6 +22,7 @@ import java.util.Optional;
 public class CategoryService {
 
     private final CategoryRepository categoryRepository;
+    private final CategoryMapper categoryMapper;
 
     public Category category;
 
@@ -33,6 +38,13 @@ public class CategoryService {
                 .build();
 
         return categoryRepository.save(newCategory);
+    }
+
+    public List<CategoryDto.Response> getAllCategories() {
+        List<Category> categories = categoryRepository.findAll();
+        return categories.stream()
+                .map(categoryMapper::categoryToResponse)
+                .collect(Collectors.toList());
     }
 
     private Boolean checkCategoryName(String name) {
