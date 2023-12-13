@@ -27,6 +27,8 @@ public class BoardDto {
         @NotEmpty(message = "태그를 입력해주세요")
         private List<String> tags;
 
+        private long categoryId;
+
 //        private List<String> imageUrl;   // 이미지 기능 추가 예정
     }
 
