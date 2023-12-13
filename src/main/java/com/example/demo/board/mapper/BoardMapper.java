@@ -32,6 +32,8 @@ public interface BoardMapper {
                 .collect(Collectors.toList());
     }
 
+
+    @Mapping(target = "category.categoryId", source = "categoryId")
     Board boardPostToBoard(BoardDto.Post post);
 
     Board boardPatchToBoard(BoardDto.Patch patch);
@@ -41,4 +43,6 @@ public interface BoardMapper {
     @Mapping(target = "category", source = "category.categoryName")
     @Mapping(target = "tags", source = "tags")
     BoardDto.Response boardToResponse(Board board);
+
+    List<BoardDto.Response> boardsToResponseDto(List<Board> boards);
 }
