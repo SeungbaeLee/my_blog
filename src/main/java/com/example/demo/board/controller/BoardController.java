@@ -4,15 +4,18 @@ import com.example.demo.board.dto.BoardDto;
 import com.example.demo.board.entity.Board;
 import com.example.demo.board.mapper.BoardMapper;
 import com.example.demo.board.service.BoardService;
+import com.example.demo.global.page.PageDto;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -34,6 +37,12 @@ public class BoardController {
     }
 
     //글 조회
+    @GetMapping("/{categoryId}")
+    public ResponseEntity readBoardsOfCategory(Pageable pageable,@PathVariable("categoryId") @Positive Long categoryId) {
+        Page<Board> boardPage = boardService.readBoardsOfCategory(pageable, categoryId);
+        List<Board> boardList = boardPage.getContent();
+        return new ResponseEntity<>(new PageDto<>(boardMapper.boardsToResponseDto(boardList), boardPage), HttpStatus.OK);
+    }
 
     //글 수정
 
