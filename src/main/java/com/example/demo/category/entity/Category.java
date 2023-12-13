@@ -24,9 +24,10 @@ public class Category extends Auditable {
     private List<Board> boardList = new ArrayList<>();
 
     @Builder
-    public Category(String categoryName, List<Board> boardList) {
+    public Category(String categoryName, List<Board> boardList, long categoryId) {
         this.categoryName = categoryName;
         this.boardList = boardList;
+        this.categoryId = categoryId;
     }
 
     public List<Board> getBoardList(){
