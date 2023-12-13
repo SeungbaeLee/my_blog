@@ -3,15 +3,16 @@ package com.example.demo.member.service;
 import com.example.demo.global.exception.BusinessException;
 import com.example.demo.global.exception.ExceptionCode;
 import com.example.demo.member.entity.Member;
+import com.example.demo.member.entity.Role;
 import com.example.demo.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+
 
 @Slf4j
 @Transactional
@@ -36,6 +37,7 @@ public class MemberService {
                 .name(member.getName())
                 .email(member.getEmail())
                 .password(encryptedPassword)
+                .role(Role.USER)
                 .build();
         //ORM을 사용해 생성된 객체 DB에 저장
         return memberRepository.save(newMember);
