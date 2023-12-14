@@ -33,7 +33,7 @@ public interface BoardMapper {
     }
 
 
-    @Mapping(target = "category.categoryId", source = "categoryId")
+    @Mapping(target = "category.categoryName", source = "categoryName")
     Board boardPostToBoard(BoardDto.Post post);
 
     Board boardPatchToBoard(BoardDto.Patch patch);
